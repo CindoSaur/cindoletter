@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Anh chỉ muốn nói với em vài điều</title>
+<title>Gửi Bảo Hà</title>
 <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,400;0,500;0,700;1,400&display=swap&subset=vietnamese" rel="stylesheet">
 <style>
 :root{--desk:#e9e2d4;--paper:#fffdf7;--dot:#e6dfcf;--ink:#3b3631;--soft:#8a8176;--red:#c8503f;--hl:#ffe98a;--kraft:#c3a373;--kraft-d:#a98a5c;--ui:#3b3631}
@@ -19,10 +19,8 @@ svg.defs{position:absolute;width:0;height:0}
 .page{position:absolute;inset:0;background:var(--paper);background-image:radial-gradient(var(--dot) 1.1px,transparent 1.3px);background-size:22px 22px;border-radius:6px 14px 14px 6px;box-shadow:0 14px 30px rgba(60,45,30,.22),2px 0 0 rgba(0,0,0,.05);transform-origin:left center;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .85s cubic-bezier(.6,.05,.3,1);overflow-y:auto;padding:34px 30px 34px 58px;cursor:pointer}
 .page.flipped{transform:rotateY(-180deg);pointer-events:none}
 .page::before{content:"";position:fixed}
-/* hand-drawn frame */
 .frame{position:absolute;inset:14px 14px 14px 42px;border:2px solid var(--ink);border-radius:6px 9px 7px 10px;filter:url(#wob);pointer-events:none;opacity:.8}
 .page{position:absolute}
-/* spiral */
 .spiral{position:absolute;left:8px;top:0;bottom:0;width:30px;background:radial-gradient(circle at 15px 50%,var(--desk) 0 5px,#8c8479 5.5px 7px,transparent 7.5px) 0 0/30px 34px repeat-y;pointer-events:none}
 .inner{position:relative;min-height:100%}
 .no{font-family:"Mali","Comic Sans MS",cursive;font-size:14px;color:var(--soft);margin:0 0 4px}
@@ -32,7 +30,7 @@ h2{font-family:"Mali","Comic Sans MS",cursive;font-weight:700;font-size:clamp(25
 p{font-size:clamp(15px,2.3vw,16.5px);line-height:1.85;margin:0 0 14px}
 .hl{margin:20px 0;padding:6px 8px;font-size:clamp(16px,2.5vw,17.5px);line-height:1.8;background:linear-gradient(transparent 8%,var(--hl) 8% 92%,transparent 92%);background-size:100% 1.8em;box-decoration-break:clone;-webkit-box-decoration-break:clone;border-radius:3px;transform:rotate(-.6deg)}
 .end{text-align:right;font-family:"Mali","Comic Sans MS",cursive;font-size:17px;line-height:1.7;margin-top:26px;color:var(--red)}
-.corner{position:absolute;right:-6px;bottom:0;width:46px;height:46px;opacity:.6}
+.corner{position:absolute;right:-6px;bottom:0;width:46px;height:46px;opacity:.6;pointer-events:none}
 /* cover */
 .cover{background:var(--kraft);background-image:repeating-linear-gradient(115deg,rgba(255,255,255,.05) 0 2px,transparent 2px 7px);display:flex;align-items:center;justify-content:center;padding:0;text-align:center}
 .cover .frame{border-color:#5a4630;inset:16px 16px 16px 44px}
@@ -44,13 +42,30 @@ p{font-size:clamp(15px,2.3vw,16.5px);line-height:1.85;margin:0 0 14px}
 .label .s{font-family:"Mali","Comic Sans MS",cursive;font-size:15px;color:var(--soft);margin:0}
 .label p{font-size:14.5px;line-height:1.8;color:var(--soft);margin:12px 0 0}
 .heart{width:54px;height:50px;margin:14px auto 0;display:block;filter:url(#wob)}
+/* nút Đồng ý / Không */
+.ask{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;margin:26px 0 10px;min-height:90px}
+.btn{font-family:"Mali","Comic Sans MS",cursive;font-weight:700;cursor:pointer;border:2px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;line-height:1.2;transition:font-size .3s ease,padding .3s ease,transform .15s ease;max-width:100%}
+.btn:active{transform:scale(.96)}
+.btn:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.yes{background:var(--red);border-color:var(--red);color:#fff;font-size:min(var(--yes,19px),10vw);padding:.55em 1.3em}
+.nope{background:transparent;color:var(--ink);font-size:var(--no,16px);padding:.45em 1em}
+.thanks{text-align:center;padding:8px 0}
+.thanks .big{font-size:clamp(22px,5vw,28px);font-weight:700;color:var(--red);margin:6px 0 10px;line-height:1.4}
+.thanks p{margin:0 0 10px}
+.reply{text-align:center;padding:4px 0;cursor:default}
+.reply .big{font-size:clamp(22px,5vw,28px);font-weight:700;color:var(--red);margin:6px 0 10px;line-height:1.4}
+.reply p{margin:0 0 12px}
+.reply textarea{display:block;width:100%;min-height:140px;resize:vertical;font-family:"Mali","Comic Sans MS",cursive;font-size:16px;line-height:1.7;color:var(--ink);background:transparent;border:2px solid var(--ink);border-radius:10px 6px 12px 7px;padding:10px 12px;margin:0 0 14px;outline:none}
+.reply textarea:focus{border-color:var(--red)}
+.reply .btn{font-size:17px;padding:.5em 1.4em}
+.reply .btn:disabled{opacity:.35;cursor:default}
 /* controls */
 .bar{display:flex;align-items:center;gap:16px;margin-top:16px;color:var(--ui);font-family:"Mali","Comic Sans MS",cursive;font-size:16px}
 .bar button{font:inherit;color:inherit;background:none;border:2px solid currentColor;border-radius:255px 15px 225px 15px/15px 225px 15px 255px;padding:2px 16px;cursor:pointer;filter:url(#wob)}
 .bar button:disabled{opacity:.3;cursor:default}
 .bar button:focus-visible{outline:3px solid var(--red);outline-offset:3px}
 .hint{opacity:.7;font-size:15px;min-width:90px;text-align:center}
-@media (prefers-reduced-motion:reduce){.page{transition:none}}
+@media (prefers-reduced-motion:reduce){.page,.btn{transition:none}}
 @media (max-width:600px){.page{padding:28px 22px 28px 52px}.book{height:74vh}}
 </style>
 </head>
@@ -65,87 +80,47 @@ p{font-size:clamp(15px,2.3vw,16.5px);line-height:1.85;margin:0 0 14px}
 </div>
 
 <script>
+/* ====== CẤU HÌNH ====== */
+const MAIL_TO = "gglau223@gmail.com";   // mail nhận câu trả lời khi bấm "Đồng ý"
+const FROM_NAME = "Bảo Hà";
+const MAX_NO_CLICKS = 6;               // bấm Không lần thứ mấy thì nút Không biến mất
+
 const SCR='<svg class="scr" viewBox="0 0 150 10"><path d="M3 6 C30 1,60 9,90 4 S130 3,147 5" fill="none" stroke="#c8503f" stroke-width="2.4" stroke-linecap="round"/></svg>';
 const HEART='<svg class="heart" viewBox="0 0 54 50"><path d="M27 46 C6 30,3 17,10 9 C17 2,25 7,27 14 C30 6,40 2,46 10 C52 18,46 31,27 46Z" fill="none" stroke="#c8503f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const CORNER='<svg class="corner" viewBox="0 0 46 46"><path d="M44 4 C34 6,10 14,4 44 M44 14 C34 18,20 26,16 44 M44 26 C38 30,32 36,30 44" fill="none" stroke="#3b3631" stroke-width="1.6" stroke-linecap="round"/></svg>';
 
+/* ====== NỘI DUNG THƯ ====== */
+// phần tử là mảng = đoạn được tô vàng nổi bật
 const LETTER=[
-{n:"tờ 1",t:"Những ngày anh nhìn thấy em mệt",s:"Những điều anh đã để ý",b:[
-"Trong những ngày gần đây, anh thấy em đã trải qua rất nhiều ngày mệt mỏi. Có những hôm em phải ngủ trễ rồi lại thức sớm để hoàn thành những việc của mình.",
-"Anh biết có những lúc em mệt đến mức chẳng còn đủ sức để để ý đến mọi thứ xung quanh. Nên anh chưa bao giờ nghĩ rằng lúc nào em cũng phải quan tâm đến anh.",
-"Ai cũng có những việc riêng của mình mà. Anh hiểu điều đó.",
-"Nhưng có một điều anh vẫn nhớ. Những lúc anh đi làm về mệt, hay những lúc anh chẳng làm gì cả, em vẫn từng hỏi anh rằng anh có mệt không.",
-"Những lúc anh không đạt được một điều gì đó, em cũng từng ở bên và an ủi anh, giúp anh có thêm một chút sức để đứng tiếp.",
-"Có thể với em những điều đó rất nhỏ thôi. Nhưng với anh thì không nhỏ chút nào."]},
-{n:"tờ 2",t:"Hà trong mắt anh",b:[
-"Anh đã dần biết thêm nhiều phần tính cách của em rồi.",
-"Có lúc em nói nhiều, hay đùa linh tinh, đôi khi hơi nghịch một chút. Nhưng anh thấy đó cũng là một phần rất riêng của em.",
-"Anh không muốn em phải thay đổi chỉ để trở nên hợp với anh hơn.",
-["Anh chỉ muốn Hà vẫn là Hà, vẫn có thể thoải mái là chính mình khi ở bên anh."],
-"Anh muốn em biết rằng, em không cần phải trở thành một người khác chỉ để được anh yêu thương."]},
-{n:"tờ 3",t:"Khoảng thời gian an toàn",b:[
-"Có một điều anh rất trân trọng ở em, đó là em đã cho anh một khoảng thời gian mà anh cảm thấy rất an toàn.",
-"Ở bên em, anh đã có thể kể rất nhiều chuyện. Kể cả những chuyện thường ngày rất nhỏ, những chuyện mà trước đây anh chưa từng kể cho ai.",
-"Anh vốn không phải người nói quá nhiều. Nhưng khi ở bên em, anh lại muốn mở lòng hơn.",
-"Anh bắt đầu kể cho em nghe những chuyện thường ngày, cả những điều trước đây anh thường giữ lại cho riêng mình. Có lẽ vì ở bên em, anh cảm thấy mình có thể nói ra những điều mà bình thường anh chẳng biết kể với ai.",
-"Có lẽ em không biết, nhưng khoảng thời gian đó đối với anh thật sự rất an toàn.",
-["Cảm ơn em vì đã đến bên anh, vì đã ngồi đó và nghe những câu chuyện của anh."],
-"Cảm ơn vì em chưa bao giờ bắt anh phải trở thành một người khác để được ở bên em."]},
-{n:"tờ 4",t:"Điều anh đã hiểu sai",b:[
-"Có một chuyện anh đã nghĩ sai.",
-"Khi anh nhìn thấy story của em, lúc đó điện thoại của em bị một người con trai khác lấy, anh đã buồn. Anh đã suy nghĩ rất nhiều.",
-"Có thể lúc đó anh đã để cảm xúc của mình đi xa hơn những gì thực sự xảy ra.",
-"Anh đã sợ, rồi từ những suy nghĩ đó anh nhìn mọi thứ theo một cách khác.",
-"Nhưng sau khi bình tĩnh lại và hiểu được chuyện, anh mới nhận ra mình đã suy nghĩ sai.",
-"Điều khiến anh buồn nhất sau đó không phải chỉ là việc anh đã hiểu lầm em. Mà là anh nhận ra cách anh xử lý chuyện đó đã khiến em phải suy nghĩ rất nhiều, khiến em buồn và tủi thân, thậm chí khiến em nghĩ không tốt về chính mình.",
-["Anh xin lỗi vì điều đó. Anh không trách em vì sự hiểu lầm của anh. Anh chỉ tiếc vì cách anh xử lý đã làm em buồn."]]},
-{n:"tờ 5",t:"Em không phải là người tệ",b:[
-"Anh biết em đã từng nghĩ rằng em là một người tệ, không tốt, hoặc không đủ tốt với anh.",
-"Nhưng thật sự anh không nhìn em như vậy.",
-"Anh nghĩ em chỉ đang nghĩ rằng những lúc anh buồn, em không biết phải làm gì, không biết phải nói gì, rồi vô tình làm anh buồn thêm.",
-"Nhưng anh vẫn luôn muốn cho em khoảng trống. Anh không cần em lúc nào cũng phải để ý đến anh. Anh hiểu em cũng có cuộc sống, có những việc riêng, có những lúc em mệt.",
-"Điều anh nhìn thấy ở em là một người đã từng quan tâm anh rất nhiều. Chỉ là có lẽ chính em cũng chưa nhận ra mình đã quan tâm anh từ những lúc nào.",
-["Em không cần phải trở thành một người xấu để anh có lý do rời đi."],
-"Anh không muốn em phải tự biến mình thành một người mà chính em cũng không muốn trở thành."]},
-{n:"tờ 6",t:"Chuyện hai đứa mình nói chuyện",b:[
-"Khi em nói rằng hai đứa mình nói chuyện không hợp, anh đã suy nghĩ rất nhiều.",
-"Anh nghĩ về bản thân mình trước.",
-"Thật ra anh là một người khá ít nói. Anh đã như vậy từ lâu rồi.",
-"Chỉ là anh sợ sự ít nói của mình sẽ khiến em cảm thấy không an toàn. Anh sợ em nghĩ rằng anh không còn yêu em, không còn quan tâm em.",
-"Nên anh đã cố nói nhiều hơn. Anh kể cho em những chuyện thường ngày, những điều trước đây anh chưa từng kể cho ai. Anh cố mở lòng nhiều hơn, chỉ vì anh muốn em hiểu anh.",
-"Nhưng giờ anh mới nhận ra, có lẽ trong lúc sợ em buồn, anh đã vô tình cố quá nhiều."]},
-{n:"tờ 7",t:"Anh cũng đang học cách yêu em tốt hơn",b:[
-"Anh nghĩ lại về rất nhiều chuyện.",
-"Anh nhận ra mình không cần phải lúc nào cũng cố làm cho mọi thứ trở nên tốt ngay lập tức.",
-"Anh cũng không cần phải lúc nào cũng chủ động, lúc nào cũng tìm chuyện để nói, hay lúc nào cũng cố làm em vui.",
-"Anh muốn học cách lắng nghe em nhiều hơn. Muốn để em có khoảng không gian của riêng mình. Muốn em có thể nói những điều em thật sự nghĩ, kể cả những điều em sợ sẽ làm anh buồn.",
-"Vì anh muốn hiểu em hơn. Và anh cũng muốn em hiểu anh hơn.",
-["Anh khá đơn giản thôi. Nếu có điều gì em không hiểu về anh, em cứ hỏi anh. Anh sẽ nói cho em biết."]]},
-{n:"tờ 8",t:"Điều anh muốn em nhớ",b:[
-"Hà không bị bỏ lại đâu.",
-"Em cũng không cần phải hoàn hảo.",
-"Nếu em thấy mệt, nếu em thấy áp lực, hay nếu có một điều gì đó khiến em không thoải mái, em cứ nói với anh.",
-"Anh không muốn em phải giữ tất cả mọi thứ trong lòng chỉ vì sợ anh buồn.",
-"Anh muốn cùng em trải qua những điều đó, chứ không muốn em phải tự mình chịu đựng.",
-["Anh chỉ mong em vẫn có thể là chính em. Không cần phải đánh mất bản thân chỉ để trở thành một người tốt hơn trong mắt anh."],
-"Em vui thì anh cũng muốn được ở bên em. Em buồn thì anh cũng muốn được ở bên em."]},
-{n:"tờ cuối",t:"Nếu hôm nay em vẫn còn mệt...",last:1,b:[
-"Anh không cần em phải trả lời tất cả những điều này ngay.",
-"Nếu em vẫn còn buồn thì cứ buồn một chút. Nếu em mệt thì cứ nghỉ ngơi. Em không cần phải cố tỏ ra ổn trước mặt anh.",
-"Khi mọi thứ nhẹ lòng hơn, mình lại từ từ tìm hiểu nhau. Nói với nhau nhiều hơn, hiểu nhau nhiều hơn, rồi cùng nhau bước qua từng ngày.",
-"Anh không muốn hai đứa cứ im lặng rồi từ từ trở nên xa nhau. Anh muốn mọi thứ có thể chậm lại, nhưng vẫn là hai đứa đang cùng nhau tìm hiểu.",
-["Nếu em thấy buồn, thì về đây với anh một chút nhé. Anh vẫn ở bên em."],
-"Anh chỉ muốn em biết rằng em không cần phải trở thành một người khác để được anh thương.",
-"Em cứ là Hà thôi."]}
+{n:"tờ 1",t:"Lời xin lỗi",s:"Anh nợ em điều này trước tiên",b:[
+"Bảo Hà à, trước hết anh muốn xin lỗi em.",
+"Hôm qua anh ghen, và anh đã để cảm xúc đó làm anh cư xử không đúng. Anh biết chuyện đó làm em buồn, làm em phải nghĩ không tốt về bản thân mình, và đến giờ em vẫn còn buồn.",
+"Anh thấy rất có lỗi vì điều đó.",
+["Anh xin lỗi em, thật lòng."],
+"Cái ghen đó là của anh, là chuyện anh cần tự học cách xử lý. Nó không phải lỗi của em."]},
+{n:"tờ 2",t:"Điều anh muốn em biết",b:[
+"Em không làm gì sai cả. Anh không hề nghĩ em là người xấu, hay có lỗi gì với anh.",
+"Anh ghen vì anh để ý đến em, vì anh sợ mất em, chứ không phải vì em đã làm điều gì không phải.",
+"Lần sau nếu anh có lo lắng hay chưa yên tâm điều gì, anh sẽ nói thẳng với em một cách nhẹ nhàng, thay vì để cảm xúc làm em buồn.",
+["Em đừng tự trách mình nữa nhé. Em cứ là Bảo Hà, thoải mái như vốn có."]]},
+{n:"tờ 3",t:"Anh nghiêm túc với em",b:[
+"Anh không muốn mọi thứ cứ lửng lơ, không muốn em phải mơ hồ về vị trí của mình trong lòng anh.",
+"Anh muốn hai đứa mình có một mối quan hệ nghiêm túc.",
+"Một mối quan hệ mà mình thật lòng với nhau, nói chuyện với nhau, cùng nhau cố gắng và cùng nhau đi tiếp, từng ngày một."]},
+{n:"tờ cuối",t:"Anh muốn hỏi em một điều",last:1,b:[
+"Anh đã nói hết những điều anh muốn nói rồi.",
+"Bây giờ chỉ còn một câu hỏi.",
+["Bảo Hà, từ hôm nay mình cùng nhau hẹn hò nhé?"]]}
 ];
 
+/* ====== DỰNG SÁCH ====== */
 const book=document.getElementById("book"),hint=document.getElementById("hint"),prev=document.getElementById("prev"),next=document.getElementById("next");
 const wrap=h=>`<div class="spiral"></div><div class="frame"></div>${h}`;
-let html=`<section class="page cover">${wrap(`<div class="label"><p class="s" style="margin:0">một góc nhỏ của anh</p><div class="t">Bức thư của anh</div>${SCR.replace('class="scr"','class="scr" style="margin:0 auto 4px"')}<p>Anh muốn viết lại ở đây những điều anh đã nghĩ trong những ngày qua. Không phải để em phải trả lời ngay, cũng không phải để em cảm thấy có áp lực. Chỉ là anh muốn em hiểu anh hơn một chút.</p>${HEART}</div>`)}</section>`;
+let html=`<section class="page cover">${wrap(`<div class="label"><p class="s" style="margin:0">gửi Bảo Hà</p><div class="t">Minh Nghĩa nói nhỏ</div>${SCR.replace('class="scr"','class="scr" style="margin:0 auto 4px"')}<p>Anh có vài điều muốn nói với em. Em đọc từ từ nhé, không cần vội đâu.</p>${HEART}</div>`)}</section>`;
 LETTER.forEach(c=>{
-  const body=c.b.map(x=>Array.isArray(x)?`<div class="hl">${x[0]}</div>`:`<p>${x}</p>`).join("");
-  const end=c.last?`<div class="end">Anh vẫn ở đây.<br>Khi em vui.<br>Khi em buồn.<br>Và cả những lúc em chỉ muốn ngồi yên một chút. ♡</div>`:"";
-  html+=`<section class="page">${wrap(`<div class="inner"><div class="no">${c.n}</div><h2>${c.t}</h2>${SCR}${c.s?`<div class="sub">${c.s}</div>`:""}${body}${end}${CORNER}</div>`)}</section>`;
+  const body=c.b.map(x=>`<p>${Array.isArray(x)?x[0]:x}</p>`).join("");
+  const ask=c.last?`<div class="ask" id="ask"><button class="btn yes" id="yes" type="button">Đồng ý</button><button class="btn nope" id="nope" type="button">Không</button></div>`:"";
+  html+=`<section class="page">${wrap(`<div class="inner">${body}${ask}${c.last?"":CORNER}</div>`)}</section>`;
 });
 book.innerHTML=html;
 
@@ -155,7 +130,7 @@ let cur=0;
 function render(){
   pages.forEach((p,i)=>p.classList.toggle("flipped",i<cur));
   prev.disabled=cur===0; next.disabled=cur===N-1;
-  hint.textContent=cur===0?"bấm để mở sách":cur===N-1?"♡":`${cur}/${N-1}`;
+  hint.textContent=cur===0?"bấm để mở thư":cur===N-1?"":`${cur}/${N-1}`;
   if(pages[cur])pages[cur].scrollTop=0;
 }
 function go(d){const n=cur+d;if(n<0||n>N-1)return;cur=n;render()}
@@ -165,10 +140,80 @@ pages.forEach((p,i)=>p.addEventListener("click",e=>{
   go((e.clientX-r.left)<r.width*.22?-1:1);
 }));
 prev.onclick=()=>go(-1);next.onclick=()=>go(1);
-document.addEventListener("keydown",e=>{if(e.key==="ArrowRight"||e.key===" ")go(1);if(e.key==="ArrowLeft")go(-1)});
+document.addEventListener("keydown",e=>{if(e.target.closest&&e.target.closest("textarea"))return;if(e.key==="ArrowRight"||e.key===" ")go(1);if(e.key==="ArrowLeft")go(-1)});
 let sx=null;
-book.addEventListener("touchstart",e=>sx=e.touches[0].clientX,{passive:true});
-book.addEventListener("touchend",e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>50){e.preventDefault&&0;go(dx<0?1:-1)}});
+book.addEventListener("touchstart",e=>{sx=e.target.closest(".reply")?null:e.touches[0].clientX},{passive:true});
+book.addEventListener("touchend",e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>50){go(dx<0?1:-1)}});
+
+/* ====== NÚT ĐỒNG Ý / KHÔNG ====== */
+const ask=document.getElementById("ask"),yesBtn=document.getElementById("yes"),noBtn=document.getElementById("nope");
+let noClicks=0,answered=false;
+
+// "Không": chỉ làm nút Đồng ý to ra và nút Không nhỏ lại, không làm gì khác
+noBtn.addEventListener("click",e=>{
+  e.stopPropagation();
+  if(answered)return;
+  noClicks++;
+  ask.style.setProperty("--yes",Math.min(19+noClicks*8,72)+"px");
+  ask.style.setProperty("--no",Math.max(16-noClicks*2,5)+"px");
+  // bấm Không đủ số lần thì nút Không biến mất, chỉ còn nút Đồng ý
+  if(noClicks>=MAX_NO_CLICKS)noBtn.remove();
+});
+
+// "Đồng ý": gửi mail rồi hiện lời cảm ơn
+yesBtn.addEventListener("click",e=>{
+  e.stopPropagation();
+  if(answered)return;
+  answered=true;
+  sendYes();
+  ask.outerHTML=`<div class="reply" id="reply"><div class="big">Cảm ơn em đã đồng ý</div><p>Em muốn nói gì với anh thì viết ở đây nhé, Bảo Hà. Em cứ viết thoải mái, anh sẽ đọc từng chữ.</p><textarea id="msg" placeholder="Em viết ở đây..." maxlength="2000"></textarea><button class="btn yes" id="send" type="button" disabled>Gửi cho anh</button></div>`;
+  const reply=document.getElementById("reply"),msg=document.getElementById("msg"),send=document.getElementById("send");
+  reply.addEventListener("click",ev=>ev.stopPropagation());
+  msg.addEventListener("input",()=>{send.disabled=!msg.value.trim()});
+  send.addEventListener("click",()=>{
+    const text=msg.value.trim();
+    if(!text)return;
+    send.disabled=true;
+    sendMessage(text);
+    reply.innerHTML=`<div class="big">Anh nhận được rồi</div><p>Cảm ơn em đã nói với anh. Từ hôm nay, mình cùng nhau hẹn hò nhé, Bảo Hà.</p><p>Anh sẽ trân trọng em và cố gắng thật nhiều.</p>${HEART}`;
+  });
+  setTimeout(()=>msg.focus({preventScroll:true}),50);
+});
+
+function sendYes(){
+  const when=new Date().toLocaleString("vi-VN");
+  const payload={
+    _subject:"Bảo Hà đã bấm ĐỒNG Ý",
+    _captcha:"false",
+    _template:"box",
+    "Người trả lời":FROM_NAME,
+    "Câu trả lời":"ĐỒNG Ý - cùng nhau hẹn hò",
+    "Số lần bấm Không trước đó":String(noClicks),
+    "Thời gian":when
+  };
+  fetch("https://formsubmit.co/ajax/"+MAIL_TO,{
+    method:"POST",
+    headers:{"Content-Type":"application/json","Accept":"application/json"},
+    body:JSON.stringify(payload)
+  }).then(r=>r.json()).then(d=>console.log("FormSubmit:",d)).catch(err=>console.error("Gửi mail thất bại:",err));
+}
+
+function sendMessage(text){
+  const payload={
+    _subject:"Bảo Hà gửi lời nhắn cho anh",
+    _captcha:"false",
+    _template:"box",
+    "Người gửi":FROM_NAME,
+    "Lời nhắn":text,
+    "Thời gian":new Date().toLocaleString("vi-VN")
+  };
+  fetch("https://formsubmit.co/ajax/"+MAIL_TO,{
+    method:"POST",
+    headers:{"Content-Type":"application/json","Accept":"application/json"},
+    body:JSON.stringify(payload)
+  }).then(r=>r.json()).then(d=>console.log("FormSubmit:",d)).catch(err=>console.error("Gửi lời nhắn thất bại:",err));
+}
+
 render();
 </script>
 </body>
